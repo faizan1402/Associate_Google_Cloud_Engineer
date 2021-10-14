@@ -1,0 +1,16 @@
+# Google Compute Engine (GCE)
+  -> In corporate data centers,application are deployed to physical servers
+  -> Where do you deploy applications in the cloud?
+   . Rent virtual servers
+   . Virtual Machines - Virtual serverse in GCP
+  -> Google Compute Engine (GCE)-Provision & Manage Virtual Machines
+  -> Create and manage lifecycle of virtual machine (VM) instances
+  -> Load balancing and auto scalling for your VM instances
+ # Our Goal:
+     -> Setup VM instances as HTTP(Web) server
+     -> Distribute load with Load Balancers
+
+# Compute Engine Hands-on
+  -> Let's create a few VM instances and play with them
+  -> Let's check out the lifecycle of VM instances
+  -> Let's use SSH to connect to VM instancess

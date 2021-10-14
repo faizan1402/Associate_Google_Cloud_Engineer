@@ -1,0 +1,16 @@
+# Google Compute Engine-Biling
+-> You ar biled by the second(after a minimum of 1 minute)
+->You are Not biled for compute when a compute instances stopped
+ -> However,you will be biled for any storage attached with it!
+ -> (Recommendation) always create budget alerts and make use of Budgets to stay on top of billing!
+ -> What are the ways you can save money?
+ -> Choose the right machine type and image for your workload
+ ->Be aware of the discounts available :
+  .Sustained use discounts
+  .Committed use discounts
+  .Discounts for preemptible VM instances
+  
+ # How can you create budget alerts?
+ -> Always create budget alerts (because create  any machine so high expensive money is alert and notifications is showing)
+ -> Create (My-First-Budget)
+ ->And other thing budget export

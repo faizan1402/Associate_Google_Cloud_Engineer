@@ -1,0 +1,69 @@
+# Gcloud-Managing Multiple Configurations
+# How to creating multiple configuration and switch them
+ 
+  ->Scenario: You are working on multiple projects from the same machine.you would want to be able to execute commands using different configurations.
+
+  -> gcloud config configuration create/delete/describe/activate/list
+     # How to create any other projects
+    ->gcloud config configurations create my-second-configuration (my-second-configuration is a project name)
+
+   . Create new configuration:gcloud config configurations create name (dev)
+   . Activate specific configuration:gcloud config configurations activate Name (dev)
+   . List Configurations : gcloud config configuration list
+
+   -> gcloud config configurations list
+  -> So the below is run this command through (gcloud config configurations list)
+    NAME: cloudshell-13431
+IS_ACTIVE: False
+ACCOUNT:
+PROJECT: theta-anchor-327006
+COMPUTE_DEFAULT_ZONE:
+COMPUTE_DEFAULT_REGION:
+
+NAME: my-default-configuration
+IS_ACTIVE: False
+ACCOUNT: officialfaizanahmad@gmail.com
+PROJECT: theta-anchor-327006
+COMPUTE_DEFAULT_ZONE:
+COMPUTE_DEFAULT_REGION:
+
+NAME: my-second-configuration
+IS_ACTIVE: True
+ACCOUNT:
+PROJECT:
+COMPUTE_DEFAULT_ZONE:
+COMPUTE_DEFAULT_REGION:
+
+ # How to change configuration second configuration to my default configuration
+
+   -> gcloud config configurations activate my-default-configuration (so changes the configuration
+   second configuration to default configuration)
+
+  -> suppose check the configuration list
+    -> gcloud config list
+    -> so below is output for (gcloud config list command through)
+
+    [accessibility]
+screen_reader = True
+[component_manager]
+disable_update_check = True
+[compute]
+gce_metadata_read_timeout_sec = 30
+[core]
+account = officialfaizanahmad@gmail.com
+disable_usage_reporting = True
+project = theta-anchor-327006
+[metrics]
+environment = devshell
+
+Your active configuration is: [my-default-configuration]
+
+-> gcloud config configurations describe my-second-configuration (command for check configuration history)
+ is_active: false
+name: my-second-configuration
+properties: {}
+
+->
+
+
+

@@ -1,0 +1,37 @@
+# App Engine - Comparison
+# App Engine Feature
+
+ Feature                 Standard                  Flexible
+1- Pricing Factors         Instance Hours            vCPU,Memory & Persistent disks
+2- Scaling                 Manual Basic Automatic    Manual Automatic
+3- Scaling To Zero         Yes                       No minimum one instance
+4- Instance Startup Time   Seconds                   Minute
+5- Rapid Scaling           Yes                       No
+6- Max.Request Timeout     1 to 10 minutes           60 minutes
+7- Locak Disk              Mostly (except for        Yes.Emphemeral. New disk
+                           Python,Php.can write        on startup.
+                           to /tmp.
+8-SSH For Debugging         No                           Yes
+
+
+
+# App Engine -Scaling Instances
+->Automatic:Automatically scale instances based on the load:
+ .Recommended for continously running workloads
+ . Auto scale based on:
+  . Target CPU Utilization-Configure a CPU threshold.
+  . Target Throughput Utilization- Configure a throughput threshold
+  .Max Concurrent Requests-Configure max concurrent requests an instance can recieve.
+  .Configure Max Instances and Min Instances.
+ ->Basic:Instances are created as and when requests are recieved:
+  . Recommended for Adhoc Workloads
+   .Instances are shutdown if zero requests
+    .Tries to keep costs low
+    .High latency is possible
+   .Not supported by App Engine Flexible Environment
+   .Configure Max Instances and Idle Timeout
+ ->Manual: Configure specific number of instances to run:
+  .Adjust number of instances manually over time.
+  
+
+

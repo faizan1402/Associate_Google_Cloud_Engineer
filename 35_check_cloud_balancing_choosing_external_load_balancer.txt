@@ -1,0 +1,57 @@
+ Pass Through: Directly send the requrest to the backend side
+
+# Cloud Load Balancing - Features :
+
+    Load Balancer        Type of Traffic          Proxy or Pass Through        Destination Ports
+
+1-> External HTTPS      Global,External,HTTP,      Proxy                        HTTP on 80 or 8080
+                          or HTTPS                                              HTTPS on 443
+
+
+2-> Internal HTTP(S)    Regional,Internal,HTTP,    Proxy                        HTTP on 80 or 8080
+                         HTTPS                                                  HTTPS 443
+
+3-> SSL Proxy           Global,External,TCP,        Proxy                       A Big List
+                        wih SSL offload
+
+4-> TCP Proxy           Global,External,TCP         Proxy                       A Big List
+                        without SSL offload           
+ 
+5-> External Network    Regional,External,           Pass through                  Any 
+TCP/UDP                 TCP or UDP 
+
+6-> Internal TCP         Regional Internal TCP       Pass through                  Any
+/UDP                     or UDP
+
+
+# Load Balancer Scenarios :
+
+Scenario :                                                      Solution:
+
+1) You want only healthy instances to                           Configure health check
+recieve traffic.
+
+2)You want high availability for your VM                       Create multiple MIG for instance.                                                      your VM instances in mu
+                                                               ltiple regions load balance using load balancer.        
+
+3) You want to route requests to multiple                      Create a individual MIGs and backe 
+microservices using the same load balancer.                    nds  for each microservice.create H
+                                                               Host and path rules to  redirect to specific microservice backend based on the path (/microservice-a,/microservice-b etc.) you can route a backend cloud storage bucket as well.
+
+
+4)You want to load balance Global external                     Choose external                    
+ HTTPS traffic across backend instances,                       HTTPs load balancer
+ across multiple regions.
+
+ 5) You want to SSL termination for Global                     Choose SSL proxy load balancer
+ non HTTPs traffic with load balancing
+
+
+
+
+# 
+1)Create Multiple MIGs for yourVM 
+      instances in
+2)  multiple request balance using a Load Balaner.
+3) Create individual MIGs and backends for each microservice.create Host and path rules to redirect to specific microservice backend based on the path (/microservice-a,/microservice-b etc.)
+you can route a backend cloud storage bucket as well.

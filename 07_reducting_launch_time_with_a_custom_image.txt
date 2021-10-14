@@ -1,0 +1,22 @@
+# Reducing Launch Time with Custom Image
+ ->Installing OS patches and software at launch of VM instances increase boot up time
+ ->How about creating a custom image with OS patches and software pre-installed?
+ -> Can be created from an instance,a persistent disk a snapshot,another image,or file in cloud storage
+ ->can be shared across projects
+ -> (Recommendation) Desprecate old images (& specify replacement image)
+ ->(Recommendation) hardening an image- customize images to your corporate security standards.
+ -> Prefer using Custom Image to Startup script
+
+ -> Instance-1 (Compute Engine) -> Image(Compute Engine) -> Instances (Compute Engine)
+
+ # How to create custom image
+   -> open disks (this disks is virtual machine disks)
+
+   ->after that custom images load then instance template file copy and chage the image file (copy instancetemplate and changes the custom-image add the file)
+   -> my-instance-template-with-custom-image 
+   -> after create vm(virtual machine)
+   -> and previous activity are deleted (means vm instance of instance template in vm)
+   ->Hello world from my-instance-template-with-custom-image-1 10.182.0.5 (output is showing before image are created) ( 10.182.0.5 this is internal ip address)
+   
+   ->
+

@@ -1,0 +1,7 @@
+ # To check the load balancer checkout
+ # Frontend Check IP:Port (select port no and paste down)
+ -> check the created load balancer (Monitoring)
+ -> check the load balancer
+ -> check the virtual instance
+ -> check the instance groups
+ # It means multiple load balancing IP Port check and check multiple IP Port ,different times refresh  

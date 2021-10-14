@@ -1,0 +1,49 @@
+# Cloud Load Balancing
+-> Distributes user traffic across instances of an application in single or multiple regions
+
+  -> Fully distributed,software defined managed service
+
+  -> Important Features:
+    . Health check - Route to healthy instances
+     . Recover from failures
+    . Auto Scaling
+    . Global load balancing with single anycast IP
+     . Also supports internal load balancing
+   -> Enables:
+      . High Availability
+      . Auto Scaling
+      . Resiliency
+   # HTTP vs HTTPS vs TCP vs TLS vs UDP
+
+  Application Layer(Layer 7)     HTTP HTTP SMTP
+  Transport Layer(Layer 4)       TCL,TLS,UDP
+  Network Layer(Layer 3)          IP
+
+ # Network Layer:
+  ->IP(Internet Protocol):Transfer bytes.Unreliable
+  # Transport Layer:
+   .TCP (Transmission Control):Reliability>Performance
+   . TLS(Transport Layer Security):Secure TCP
+   . UDP(User Datagram Protocol): Performance > Reliability
+   ->Application Layer :
+    . HTTP(Hypertext Transfer Protocol):Stateless Request Response Cycle
+    . HTTPS:Secure HTTP
+    . SMTP:Email Transfer Protocol
+
+   -> Most applications typically communicate at application layer
+     .Web apps/REST API(HTTPS),Email Servers(SMTP),File Transfers(FTP)
+     .All these applications use TCP/TLS at network layer(for reliability)
+  -> However applications needing high performance directly communicate at transport layer:
+
+
+
+
+  -> Computers use protocols to communicate
+  -> Mutiple layers and multiple protocols
+
+  # Network Layer : Transfer bits and bytes
+  # Transport Layer : Are the bits and bytes transferred property?
+  # Application Layer : Make REST API calls and Send Emails
+  -> (Remember) Each layer makes use of the layers beneath it
+
+  -> (Remember) Most application talk at application layer some applications talk at network layer directly(high perfomance).

@@ -1,0 +1,10 @@
+# Virtual Machine-Best Practices
+ -> Choose Zone and Region based on:
+ ->Cost,Regulations,Availability,Needs,Latency,and Specific,Hardware needs
+ ->Distribute instances in multiple zones and regions for high availability
+ -> Choose right machine type for you needs:
+   ->Play with them to find out the right machine type
+
+ ->Reserve for "committed use discounts"for constants workloads
+ ->Use preemptible instances for fault-tolerant,NON time critical workloads
+ ->Use labels to indicate environment,team,business,unit etc

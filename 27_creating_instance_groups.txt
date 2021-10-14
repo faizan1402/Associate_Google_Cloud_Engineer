@@ -1,0 +1,51 @@
+# Firstly Creating Instance Group inside Virtual Machine
+# Instance Group is two parts Managed Instance group and Unmanaged Instance Group 
+
+  -> If You click unmanaged instance group then select region and zone and remaining is default no changes
+   -> Unmanaged Instance Group very rarely are using
+  -> Mostly using Managed Instance Group used
+
+  # How to Create Manage Instance Groups
+  1)-> create name -> my-managed-instance-group
+  2)-> When you are choosing the single region and single zone then select the  name of region and zone and otherwise you are selecting multiple region and zone then. 
+  3)-> select before you are creating the instance template
+  4)->  3 Options to choose the Autoscale
+  . Choose Autoscale
+  . Choose Auto Do n't autoscale
+  . Choose Autoscale only up
+  5)-> Choose the Add new metric (but choose the metric bydefault)
+  6)-> Select CPU so by-default select cpu
+  7)-> Cool down period:  
+  8)-> Maximum instances and Minimum Instances select to 2
+  9)-> Enable Scale in Controls
+       . Number of instances
+       . Percent Of instances and by default selecte no changes
+  10)-> Health Check -> Create Health Check
+     . First is name select-> my-vm-health-check
+     . select protocol is HTTP
+     . Port no -> by default is selected
+     . Proxy protocol bydefault
+     . Check interval and timeout
+     . Healthy thereshold and Unhealthy threshold
+     . Initial delay default is 300sec but this is very high so changes the initial delay 30sec (as mark) 
+    11) Click restart /replace at top right side
+      . Current template :
+      . Operation (1) Restart (2) Replace
+      . Maximum surge
+       so these are three points is bydefault
+     12) Rolling Update
+          . Add a second template for canary testing
+          . Update Mode : 1)Proctive 2) Opportunity
+
+    # How to Update a Managed Instance Group (MIG)
+  -> Rolling update- Gradual update of instances in an instances group to the new instance template.
+  -> Rolling update - Gradual update of instances in an instance group to the new instance template.
+  -> Specify new template:
+  . (Optional) Specify a template for canary testing
+  . Specify how you want the update to be done:
+  . Start the update immediately(proactive) or  instance grou is resized later(Oppotunistic)
+  -> How should the update happen?
+  . Maximum surge: How many instances are added at any point in time?
+  -> Rolling Restart/replace:Gradual restart or replace of all instances in the group
+  . No change in template But replace/restart existing VMs
+  . Configure Maximum surge,Maximum unavailable and what you want to do?(Restart/Replace)

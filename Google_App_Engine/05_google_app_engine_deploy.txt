@@ -1,0 +1,170 @@
+# App Engine Demo
+ . Deploy an application to cloud using App Engine
+ # 1 Creating New Project so firstly go to project section and 
+ -> Create New Project
+ -> Step 1:Project Name :Learnig App Engine Project
+ -> Step 2: Enable App Engine Admin ApI OR Choose App Engine and select the region which region you application deploy
+ -> Step 3: Open cloud shell terminal and open cloud shell editor
+ -> Step 4: Drag and Drop copy the file App Engine Files  Inside file explorer through
+ -> Two file copy first file is default-service and second file is my-default-service.
+ -> Step 5:Execute the command and check the application configuration and afterthat deploy the application
+ -> Check the services different services
+  -> gcloud app services list
+  -> gcloud app versions list
+  -> gcloud app browse
+  -> gcloud app --version=(copy the old version ID)
+
+
+ # 2 How to splitting multiple versions of application
+    gcloud app deploy --version --n-o-promote (means this command means -deploy the new version of the application without switching the traffic)
+    -> gcloud app deploy --version=v3 --no-promote
+    -> gcolud app browse --version v3 (so showing the url of deploy the application)
+    -> gcloud app services set-traffic --splits=v3=.5,v2=.5
+    -> watch curl https://zippy-chain-328211.uc.r.appspot.com (means every 2 sec spliting the traffic and all of these activity is showing)
+    -> gcloud app services set-traffic --splits=v3=.5,v2=.5 --split-by=random (this command means randomly traffic changes between two version v2 and v3 version)
+  # All Traffic only v3
+   -> gcloud app services set-traffic --splits=v3=1
+
+
+
+
+ # 1 Open the cloud terminal shell and check config list
+ -> gcloud config list
+  officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud config list
+[accessibility]
+screen_reader = True
+[component_manager]
+disable_update_check = True
+[compute]gce_metadata_read_timeout_sec = 30
+[core]
+account = officialfaizanahmad@gmail.com
+disable_usage_reporting = True
+project = zippy-chain-328211
+[metrics]
+environment = devshell 
+
+#2 Set Up the Project Id
+-> gcloud config set project zippy-chain-328211
+-> This message means project is setup  and now afterthat deploy the project
+
+officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud config set project zippy-chain-328211
+Updated property [core/project].
+
+# 3 Deploy The Application and Store the Cloud Storage
+
+ officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ ls
+app.yaml  main.py  requirements.txt
+officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ cat app.yaml
+runtime: python39officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud app deploy
+Services to deploy:
+
+descriptor:                  [/home/officialfaizanahmad/default-service/app.yaml]
+source:                      [/home/officialfaizanahmad/default-service]
+target project:              [zippy-chain-328211]
+target service:              [default]
+target version:              [20211006t122102]
+target url:                  [https://zippy-chain-328211.uc.r.appspot.com]
+target service account:      [App Engine default service account]
+
+
+Do you want to continue (Y/n)?  Y
+
+Beginning deployment of service [default]...
+Created .gcloudignore file. See `gcloud topic gcloudignore` for details.
+Uploading 4 files to Google Cloud Storage
+25%
+50%
+75%
+100%
+100%
+File upload done.
+Updating service [default]...done.     
+Setting traffic split for service [default]...done.     
+Deployed service [default] to [https://zippy-chain-328211.uc.r.appspot.com]
+
+You can stream logs from the command line by running:
+  $ gcloud app logs tail -s default
+
+To view your application in the web browser run:
+  $ gcloud app browse
+
+# 4 When afterthat deploy completed then Url printed-> https://zippy-chain-328211.uc.r.appspot.com
+
+
+  # How to check the application and packages on google cloud storage 
+  -> so check the IAM & Admin -> (Check the project name and cloud storage application is completly deply
+  or not and also check the packages on cloud).
+
+ # 5 Check Services
+ -> gcloud app services list
+ officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud app services list
+SERVICE: default
+NUM_VERSIONS: 2
+
+# 6 Check versions
+ -> gcloud app versions list
+
+ officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud app versions list
+SERVICE: default
+VERSION.ID: 20211006t122102
+TRAFFIC_SPLIT: 0.00
+LAST_DEPLOYED: 2021-10-06T12:25:06+00:00
+SERVING_STATUS: SERVING
+-> gcloud app instances list
+
+officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud app instances list
+Listed 0 items.
+# 7 Suppose changes the version v2 then command firstly edit the python file write v2 version
+-> gcloud app deploy --version=v2 (so this command through directly run the code)
+
+# 8 How browse command through application deploy
+-> gcloud app browse
+
+officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud app browse
+Did not detect your browser. Go to this link to view your app:
+https://zippy-chain-328211.uc.r.appspot.com
+# 9 Check the older version so simple older version Id copy
+->  gcloud app browse --version=20211006t122102
+
+officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud app browse --version=20211006t122102
+Did not detect your browser. Go to this link to view your app:
+https://20211006t122102-dot-zippy-chain-328211.uc.r.appspot.com
+
+# 10- How to splitting multiple versions of application
+    gcloud app deploy --version --n-o-promote (means this command means -deploy the new version of the application without switching the traffic)
+    -> gcloud app deploy --version=v3 --no-promote
+    -> Means deploy the v3 application
+
+   Deployed service [default] to https://v3-dot-zippy-chain-328211.uc.r.appspot.com
+
+# 11- Spliting the traffic 
+->gcloud app services set-traffic --splits=v3=.5,v2=.5
+
+officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud app services set-traffic --splits=v3=.5,v2=.5
+Setting the following traffic allocation:
+ - zippy-chain-328211/default/v3: 0.5
+ - zippy-chain-328211/default/v2: 0.5
+NOTE: Splitting traffic by ip.
+Any other versions of the specified service
+
+# 12- watch curl https://zippy-chain-328211.uc.r.appspot.com(means every 2 sec spliting the traffic and all of these activity is showing)
+
+-> watch curl https://zippy-chain-328211.uc.r.appspot.com (means every 2 sec spliting the traffic and all of these activity is showing)
+#  This command means randomly traffic can changes between two version v2 and v3
+
+ -> gcloud app services set-traffic --splits=v3=.5,v2=.5 --split-by=random (this command means randomly traffic changes between two version v2 and v3 version)
+
+officialfaizanahmad@cloudshell:~/default-service (zippy-chain-328211)$ gcloud app services set-traffic --splits=v3=.5,v2=.5 --split-by=random
+Setting the following traffic allocation:
+ - zippy-chain-328211/default/v3: 0.5
+ - zippy-chain-328211/default/v2: 0.5
+NOTE: Splitting traffic by random.
+Any other versions of the specified service will receive zero traffic.
+Do you want to continue (Y/n)?  Y
+
+Setting traffic split for service [default]...done. 
+
+# 13- All Traffic only v3
+   -> gcloud app services set-traffic --splits=v3=1 (so this command) 
+
+

@@ -1,0 +1,5 @@
+# Again click ssh and open virtual machine
+-> step 1 check /var/www/html/index.html
+-> step 2 sudo su (for apach2 server install)
+-> step 3 service apach2 start (means http server is run)
+-> previous custom-image run on external ip address

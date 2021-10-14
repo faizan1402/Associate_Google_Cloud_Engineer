@@ -1,0 +1,24 @@
+# Compute Engines Features:GPUs
+->How do you accelerate math intensive and graphics-intensive workloads for AI/ML etc?
+-> Add a GPU to your virtual machine:
+ .High performance for math intensive and graphics-intensive workloads
+ .High cost
+ .(Remember) Use images with GPU libraries (Deep learning) installed
+ ->GPU restrictions:
+ .Not supported on all machine types(For example,not supported on shared-core or memory-optimized machine types)
+ .On host maintenance can only have the value"Terminate VM instance"
+ ->Recommended Availability policy for GPUs
+
+ # Virtual Machine-Remember
+  ->Associated with a project
+  ->Machine type availability can vary from region to regions
+  ->You can only change the machine type (adjust the number of vCPUs and memory) of a stopped instance
+   ->You cannot change the machine type of a running instance
+  ->VM's can be filtered by various properties
+    -> Name,Zone,Machine,Type,Internal/External IP,Network,Labels etc
+   ->Instances are Zonal (Run in a specific zone(in a specific region))
+  ->Images are global(you can provide to other projects-if needed)
+  ->Instance templates are global(Unless you use zonal resources in your templates)
+  ->Automatic Basic Monitoring is enabled
+  ->Default Metrics:CPU utilization,Network Bytes (in/out),Disk throughput/IOPS
+  ->For Memory Utilization & Disk Space Utilization-Cloud Monitoring agent is needed

@@ -1,0 +1,108 @@
+#Kubernetes -A Microservice Journey -
+
+ -> Let's have some fun:Let's get on a journey with kubernetes:
+ -> Let's create a cluster,deploy a microservice and play with it in 13 steps!
+
+-> default node pool (create new project in project section) 
+# Before Kubernetes engine creating firstly create new project right side inside project section 
+# step 2 : kubernetes Enable API and then search kubernetes cluster and create cluster
+-> cluster two types 1) Standard cluster 2) Auto pilot 
+-> Auto pilot cluster is GKE (Google Kubernetes Engine)
+-> Auto pilot cluster is only reduce your operational cost in running kubernetes cluster.
+
+# So main cluster is standard cluster because standard cluster you can create different 
+numbers of node select.
+-> Provides an hands of experince
+ . Do not worry about managing the cluster infrastructure nodes,nodes pools)
+ . GKE manages the cluster for you.
+
+-> command execute (step 2 select standard configuration select and create cluster)
+-> gcloud cotainer cluster or use cloud console.
+# step 4 To deploy the microservices (connect to the kubernetes cluster)
+ -> Create deployment & service using kubectl commands (deploy the microservices)
+
+  -> kubectl create deployment hello-world-rest-api --image=in28min/hello-world-rest-api:0.0.1.RELEASE
+  -> kubectl get deployment
+
+# Expose kubectl deployment
+  -> kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
+
+#  Check the current progress (different services followed)
+-> kubectl get services --watch
+
+# Increase number of instances of your microservice:
+ ->kubectl scale deployment hello-world-rest-api --replicas=3
+ ->kubectl get deployment
+
+
+
+
+
+# 1 How to deploy kubernetes cluster
+->gcloud container clusters get-credentials my-cluster --zone us-central1-c --project my-kubernetes-project-329007
+
+
+ officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ gcloud container clusters get-credentials my-cluster --zone us-central1-c --project my-kubernetes-project-329007
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for my-cluster.
+
+# 2-Create the kubectl for microservices
+
+officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ kubectl create deployment hello-world-rest-api --image=in28min/hello-world-rest-api:0.0.1.RELEASE
+deployment.apps/hello-world-rest-api created
+# 3-Deploy the microservices 
+-> kubctl get deployment
+
+officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ kubectl get deployment
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+hello-world-rest-api   1/1     1            1           7m28s
+
+#3-Expose the kubernetes
+-> kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
+officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
+service/hello-world-rest-api exposed
+
+# 4- Using different services in kubernetes engine
+ -> kubectl get services
+
+ officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ kubectl get services
+NAME                   TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
+hello-world-rest-api   LoadBalancer   10.80.8.105   34.122.145.168   8080:32042/TCP   3m15s
+kubernetes             ClusterIP      10.80.0.1     <none>           443/TCP          110m
+
+# 5- Check the current progress (different services followed)
+-> kubectl get services --watch
+
+officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ kubectl get services --watch
+NAME                   TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
+hello-world-rest-api   LoadBalancer   10.80.8.105   34.122.145.168   8080:32042/TCP   7m10s
+kubernetes             ClusterIP      10.80.0.1     <none>           443/TCP          114m
+
+# curl External IP:PORT NUMBER()
+ -> officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ curl 34.122.145.168:8080
+   Output: {healthy true:}
+
+ #  curl 34.122.145.168:8080/hello-world
+
+ ->officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$  curl 34.122.145.168:8080/hello-world
+
+  Output: Hello World  V1 qwzlz
+
+ -> kubectl get events
+
+ officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ kubectl scale deployment hello-world-rest-api --replicas=3
+deployment.apps/hello-world-rest-api scaled
+officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ kubectl get deployment
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+hello-world-rest-api   3/3     3            3           57m
+
+->kubectl get pods (different pods name below present)
+  . 2rzw5,qwzlz,ttkdf (so different pods name below present)
+
+officialfaizanahmad@cloudshell:~ (my-kubernetes-project-329007)$ kubectl get pods
+NAME                                    READY   STATUS    RESTARTS   AGE
+hello-world-rest-api-687d9c7bc7-2rzw5   1/1     Running   0          9m36s
+hello-world-rest-api-687d9c7bc7-qwzlz   1/1     Running   0          66m
+hello-world-rest-api-687d9c7bc7-ttkdf   1/1     Running   0          10m
+
+

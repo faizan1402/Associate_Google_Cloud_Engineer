@@ -1,0 +1,70 @@
+  #Introduction google associate cloud engineer
+# Cloud - Advantages :
+-> Trade "capital expense" for "variable expense"
+-> Benifit from massive economies of scale
+-> Stop guessing capacity
+-> Stop spending money running maintaining data centers
+-> Go globl in minutes
+
+ Google Cloud  Platform (GCP)
+# One of the top3 cloud service providers
+# Provides a number of services (200+) (GCP)
+-# Reliable,secure and highly-performant:
+    -> Infrastructure that powers 8 services with over 1 Bilion Gmail,Google Search,Youtube etc.
+-# One thing I love : "cleanest cloud"
+    -> Net carbon-neutral cloud (electricity used matched 100% with renewable energy)
+# The entire course is all about GCP.You will learn it as we go further.
+
+# Cloud applications make use of multiple GCP services
+# There is no single path to learn these services independently
+
+# HOWEVER,we've worked out a simple path!
+
+# How to Google Cloud Account Create
+ cloud.google.com 
+
+
+ # Regions And Zones :
+ 
+-> Imagine that your application is deployed in a data center in London
+-> What would be the challenges?
+   .Challenge 1 : Slow access for users from other parts of the world (high latency)
+   
+# Multiple data centers
+   -> London Region 
+      . Corporate data center1 Coporate data Center2
+# What would be the challenges?
+      . Challenge1: Slow access for users from other parts of the world
+      . Challenge2 (Solved):What if one data center crashes?
+      . Challenge3 (Solved): What if entire region of London is unavailable?
+   
+   # Regions :
+  -> Imagine setting up data centers in different regions around the world
+  -> Different regions around the world 
+     . Would that be easy?
+  -> (Solution) Google provides 20+ regions around the world
+   -> Expanding every year
+    # Region : Specific geographical location to host your resources
+ 
+
+# Advantages:
+   -> High Availability
+   -> Low Latency
+   -> Global Footprint
+
+  Zones : How to achieve high availability in the same region (or geographic location)?
+ 
+  -> Each region has three or more zones
+  -> (Advantage) Increased availability and fault tolerance within same region
+  -> (Remember) Each zone has one or more discreate clusters
+     > Cluster : distinct physical infrastructure that is housed in a data center
+  -> (Remember) Zones in a region are connected through low-latency links
+  
+   New Regions and Zones are constantly added :
+   Region Code     Region                    Zone   Zoneslist
+us-west1           The Dalles,Oregon,North    3        us-west-1
+                    Americal                           us-west-2
+
+europe-north1      Hamina,Finland,Europe      3        europe-north1-a,europe-north1-b
+                                                           europe-north1-c
+asia-south1          Mumbai,India.APAC        3        asia-south1-a,asia-south-b.asia-south-c

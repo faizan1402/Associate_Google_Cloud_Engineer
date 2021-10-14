@@ -1,0 +1,28 @@
+# Instance Group Scenarios
+  
+  Scenario                                             Solution
+
+ 1) You wan to MIG managed                            Create multiple zone                       
+    application to survive                            (MIG) or (regional zone)
+    Zonal Failures                                    
+
+  2) Yo want to create VMs of                         Create Unmanaged Instance Group
+     a different configuration
+     of the same group
+
+  3) You want to preserve                            StateFul MIG: Preserve VM state(instance
+     VM state in an MIG                               Name,attached Persitent disks and Meta
+                                                      data.)Recommanded for stateful Workloads
+                                                      database,data processing apps
+
+  
+  4) You want to high availability                   Use an instance template availabilty 
+     an MIG even when there are                         policy automatic restart:enabled & host
+     hardware/software updates                          menatainance:migrate Ensure live
+                                                      migration and automatic restarts.
+
+ 
+ 5) you want unhealthy instances                      Configure check on the MIG (self healing)
+ to be replaced by automatic                           
+
+ 6) Avoid Frequent scale up and downs                  Cool/down period initial delay

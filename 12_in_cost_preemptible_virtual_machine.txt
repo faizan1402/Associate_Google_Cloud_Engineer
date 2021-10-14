@@ -1,0 +1,17 @@
+# Preemptible VM
+-> Short-Lived chaper (Upto 80%) compute instances 
+-> can be stopped by gcp any time (preempted) within 24 hours
+-> Instances get 30 second warning (to save anything they want to save)
+
+# Use Preempt VM's if:
+-> Your application are fault tolerant 
+-> You are very cost sensitive
+-> Your workload  is NOT immediate
+-> Exampl: Non immediate batch processing jobs
+
+# Restrictions :
+-> Not always available
+-> No SLA and cannot be migrated to regular VMS
+-> No automatic Restarts
+-> Free tier not applicable
+# Create VM instances and downscroll and move to networking security click and scroll down and check preemptibility 

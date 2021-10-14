@@ -1,0 +1,166 @@
+-> Open cloud shell
+# Create instance group:create
+
+# Firstly any project can run setup project
+# step 1-> gcloud config set project (and project id)
+# gcloud compute instance-groups managed list
+  
+# 1->gcloud compute instance-groups managed create my-mig --zone us-central1-a --template my-instance-template-with-custom-image --size 1
+
+# 2->health check 
+-> --health-check=HEALTH_CHECK:How do you decide if an instance is healthy?
+-> --initial-delay:How much time should you give to an instance to start?
+-> Other similar commands - gcloud compute instance-groups managed delete/describe/list
+
+# 3-> Setup Autoscaling: set-autoscaling/stop-autoscaling
+
+-> gcloud compute instance-groups managed set-autoscaling my-mig --max-num-replicas=2
+-> --cool-down-period(default-60s): How much time should Auto Scaler wait initiating an autoscaling action?
+
+  -> --scale-based-on-cpu --target-cpu-utilization--scale-based-on-load-balancing--target-load-load-balancing-utilization
+
+  -> --min-num-replics--mode(off/on/default)/only-scale-out)  
+-> gcloud compute instance-group managed stop-autoscalling my-mig
+
+ # 4-> Update existing MIG policies (ex:auto healing policies):
+   -> gcloud compute instance-groups managed update my-mig
+   -> --initial-delay:How much time should you give to the instance to start before marking it as unhealthy?
+   -> --health-check: How do you decide if an instance is healthy?
+
+  
+ # How to managed list:
+  -> gcloud compute instance-groups managed list
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed list
+
+NAME: my-managed-instance-group
+LOCATION: us-central1
+SCOPE: region
+BASE_INSTANCE_NAME: my-managed-instance-group
+SIZE: 2
+TARGET_SIZE: 2
+INSTANCE_TEMPLATE: my-instance-template-with-custom-image
+AUTOSCALED: yes
+
+# How to create instance groups managed : create
+-> gcloud compute instance-groups managed create my-mig --zone us-central1-a --template my-instance-template-with-custom-image --size 1
+
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed create my-mig --zone us-central1-a --template my-instance-template-with-custom-image --size 1
+Created [https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/instanceGroupManagers/my-mig].
+NAME: my-mig
+LOCATION: us-central1-a
+SCOPE: zone
+BASE_INSTANCE_NAME: my-migSIZE: 0
+TARGET_SIZE: 1
+INSTANCE_TEMPLATE: my-instance-template-with-custom-image
+AUTOSCALED: no
+
+ # How to compute instance groups
+
+-> gcloud compute instance-groups managed list
+
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed list
+NAME: my-managed-instance-group
+LOCATION: us-central1
+SCOPE: region
+BASE_INSTANCE_NAME: my-managed-instance-group
+SIZE: 2
+TARGET_SIZE: 2
+INSTANCE_TEMPLATE: my-instance-template-with-custom-image
+AUTOSCALED: yes
+
+NAME: my-mig
+LOCATION: us-central1-a
+SCOPE: zone
+BASE_INSTANCE_NAME: my-mig
+SIZE: 1
+TARGET_SIZE: 1
+INSTANCE_TEMPLATE: my-instance-template-with-custom-image
+AUTOSCALED: no
+
+
+ 
+ #3-> How to Setup Autoscaling
+  -> gcloud compute instance-groups managed set-autoscaling my-mig --max-num-replicas=2
+
+ officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed set-autoscaling my-mig --max-num-replicas=2
+
+ Did you mean zone [asia-southeast1-b] for managed instance group: putofficialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups m[my-mig] (Y/n)?  n
+
+For the following managed instance group:
+ - [my-mig]
+choose a region or a zone:
+ [1] region: asia-east1
+ [2] region: asia-east2
+ [3] region: asia-northeast1
+ [4] region: asia-northeast2
+ [5] region: asia-northeast3
+ [6] region: asia-south1
+ [7] region: asia-south2
+ [8] region: asia-southeast1
+ [9] region: asia-southeast2
+ [10] region: australia-southeast1
+ [29] zone: asia-east1-a
+ [30] zone: asia-east1-b
+ [31] zone: asia-east1-c
+ [32] zone: asia-east2-a
+ [33] zone: asia-east2-b
+ [34] zone: asia-east2-c
+ [35] zone: asia-northeast1-a
+ [36] zone: asia-northeast1-b
+ [37] zone: asia-northeast1-c
+ [38] zone: asia-northeast2-a
+ [39] zone: asia-northeast2-b
+ [40] zone: asia-northeast2-c
+ [41] zone: asia-northeast3-a
+ [42] zone: asia-northeast3-b
+
+ -> gcloud compute instance-groups managed list
+
+ officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed list
+
+
+NAME: my-managed-instance-group
+LOCATION: us-central1
+SCOPE: region
+BASE_INSTANCE_NAME: my-managed-instance-group
+SIZE: 2
+TARGET_SIZE: 2
+INSTANCE_TEMPLATE: my-instance-template-with-custom-image
+AUTOSCALED: yes
+
+NAME: my-mig
+LOCATION: us-central1-a
+SCOPE: zone
+BASE_INSTANCE_NAME: my-mig
+SIZE: 1
+TARGET_SIZE: 1
+INSTANCE_TEMPLATE: my-instance-template-with-custom-image
+AUTOSCALED: no
+
+
+
+# 4-> How to check (which zone of different value checkout)
+-> gcloud compute instance-groups managed set-autoscaling my-mig --max-num-replicas=2 --zone us-central1-a
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed set-autoscaling my-mig --max-num-replicas=2 --zone us-central1-a
+Created [https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/autoscalers/my-mig-p051].
+---
+autoscalingPolicy:
+  coolDownPeriodSec: 60
+  cpuUtilization:
+    utilizationTarget: 0.6
+  maxNumReplicas: 2
+  minNumReplicas: 2
+  mode: ON
+creationTimestamp: '2021-10-03T03:48:09.475-07:00'
+id: '2769371357785633926'
+kind: compute#autoscaler
+name: my-mig-p051
+selfLink: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/autoscalers/my-mig-p051
+status: ACTIVE
+target: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/instanceGroupManagers/my-mig
+zone: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a
+

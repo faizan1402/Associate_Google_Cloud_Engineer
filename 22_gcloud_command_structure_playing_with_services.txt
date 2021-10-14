@@ -1,0 +1,322 @@
+# gcloud command structure-playing with services
+ -> Gcloud group subgroup action 
+   .Group - config or computer or container or dataflow or functions or I'm or..
+   .SubGroup - instances or images or instance-templates or machine-types or regions or zones
+   . Which sub group of the service do you want to play with?
+  ->Action - create or list or start or stop describe or ..
+   .What do you want to do?
+    # Firstly google cloud active (tracking the configuration)
+     ->gcloud init (so means active the this command now run different the command very easy)
+     -> gcloud config list (check list of items are activate or not)
+  
+   # Check the config list
+
+   ->  gcloud config list (list is showing different activity)
+    -> officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud config list
+
+      [accessibility]
+screen_reader = True
+[component_manager]
+disable_update_check = True
+[compute]
+gce_metadata_read_timeout_sec = 30
+region = us-east1
+zone = us-east1-b
+[core]
+account = officialfaizanahmad@gmail.com
+disable_usage_reporting = True
+project = theta-anchor-327006
+[metrics]
+environment = devshell
+
+Your active configuration is: [cloudshell-29533]
+
+
+   ->  gcloud compute instance list
+   ->  gcloud compute instances create
+
+   # Create the instances
+   ->  gcloud compute instances create my-first-instances-from-gcloud
+
+   -> officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instances create my-first-instances-from-gcloud
+
+Created [https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-east1-b/instances/my-first-instances-from-gcloud].
+NAME: my-first-instances-from-gcloud
+ZONE: us-east1-b
+MACHINE_TYPE: n1-standard-1
+PREEMPTIBLE:
+INTERNAL_IP: 10.142.0.2
+EXTERNAL_IP: 34.139.40.200
+STATUS: RUNNING
+
+-> gcloud compute instances list
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instances list
+
+NAME: my-first-instances-from-gcloud
+ZONE: us-east1-b
+MACHINE_TYPE: n1-standard-1 (default machine)
+PREEMPTIBLE:
+INTERNAL_IP: 10.142.0.2
+EXTERNAL_IP: 34.139.40.200
+STATUS: RUNNING
+ 
+ #  describe the instances 
+-> gcloud compute instances describe my-first-instances-from-gcloud (means describe all the configuration region,zone,machine type,..etc)
+
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instances describe my-first-instances-from-gcloud
+canIpForward: false
+cpuPlatform: Intel Haswell
+creationTimestamp: '2021-09-28T06:33:44.732-07:00'
+deletionProtection: false
+disks:
+- autoDelete: true
+  boot: true
+  deviceName: persistent-disk-0
+  diskSizeGb: '10'
+  guestOsFeatures:
+  - type: UEFI_COMPATIBLE
+  - type: VIRTIO_SCSI_MULTIQUEUE
+  index: 0
+  interface: SCSI
+  kind: compute#attachedDisk
+  licenses:
+  - https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-10-buster
+  mode: READ_WRITE
+  source: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-east1-b/disks/my-first-instances-from-gcloud
+  type: PERSISTENT
+fingerprint: 3A39hTZeDjU=
+id: '427032512514926423'
+kind: compute#instance
+labelFingerprint: 42WmSpB8rSM=
+lastStartTimestamp: '2021-09-28T06:33:51.827-07:00'
+machineType: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-east1-b/machineTypes/n1-standard-1
+metadata:
+  fingerprint: HQawmu3wffc=
+  kind: compute#metadata
+name: my-first-instances-from-gcloud
+networkInterfaces:
+- accessConfigs:
+  - kind: compute#accessConfig
+    name: external-nat
+    natIP: 34.139.40.200
+    networkTier: PREMIUM
+    type: ONE_TO_ONE_NAT
+  fingerprint: d5Vl64wGH-g=
+  kind: compute#networkInterface
+  name: nic0
+  network: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/global/networks/default
+  networkIP: 10.142.0.2
+  stackType: IPV4_ONLY
+  subnetwork: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/regions/us-east1/subnetworks/default
+scheduling:
+  automaticRestart: true
+  onHostMaintenance: MIGRATE
+  preemptible: false
+selfLink: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-east1-b/instances/my-first-instances-from-gcloud
+serviceAccounts:
+- email: 4774977886-compute@developer.gserviceaccount.com
+  scopes:
+  - https://www.googleapis.com/auth/devstorage.read_only
+  - https://www.googleapis.com/auth/logging.write
+  - https://www.googleapis.com/auth/monitoring.write
+  - https://www.googleapis.com/auth/pubsub
+  - https://www.googleapis.com/auth/service.management.readonly
+  - https://www.googleapis.com/auth/servicecontrol
+  - https://www.googleapis.com/auth/trace.append
+shieldedInstanceConfig:
+  enableIntegrityMonitoring: true
+  enableSecureBoot: false
+  enableVtpm: true
+shieldedInstanceIntegrityPolicy:
+  updateAutoLearnPolicy: true
+startRestricted: false
+status: RUNNING
+tags:
+  fingerprint: 42WmSpB8rSM=
+zone: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-east1-b
+
+# Delete the instances
+  ->gcloud compute instances delete my-first-instances-from-gcloud
+
+  # Check zones (different zones in the world)
+
+    -> gcloud compute zones list
+    officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute zones list
+NAME: us-east1-b
+REGION: us-east1
+STATUS: UP
+NEXT_MAINTENANCE:
+TURNDOWN_DATE:
+
+NAME: us-east1-c
+REGION: us-east1
+STATUS: UP
+NEXT_MAINTENANCE:
+TURNDOWN_DATE:
+
+NAME: us-east1-d
+REGION: us-east1
+STATUS: UP
+NEXT_MAINTENANCE:
+TURNDOWN_DATE:
+
+NAME: us-east4-c
+REGION: us-east4
+STATUS: UP
+NEXT_MAINTENANCE:
+TURNDOWN_DATE:
+
+NAME: us-east4-b
+REGION: us-east4
+STATUS: UP
+NEXT_MAINTENANCE:
+TURNDOWN_DATE:
+
+NAME: us-east4-a
+REGION: us-east4
+STATUS: UP
+NEXT_MAINTENANCE:
+TURNDOWN_DATE:
+
+NAME: us-central1-c
+REGION: us-central1
+STATUS: UP
+NEXT_MAINTENANCE:
+TURNDOWN_DATE:
+
+NAME: us-central1-a
+REGION: us-central1
+STATUS: UP
+NEXT_MAINTENANCE:
+TURNDOWN_DATE:
+
+# How to check regions
+ -> gcloud compute regions list
+
+ officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute regions list
+NAME: asia-east1
+CPUS: 0/8
+DISKS_GB: 0/2048
+ADDRESSES: 0/4
+RESERVED_ADDRESSES: 0/8
+STATUS: UP
+TURNDOWN_DATE:
+
+NAME: asia-east2
+CPUS: 0/8
+DISKS_GB: 0/2048
+ADDRESSES: 0/4
+RESERVED_ADDRESSES: 0/8
+STATUS: UP
+TURNDOWN_DATE:
+
+NAME: asia-northeast1
+CPUS: 0/8
+DISKS_GB: 0/2048
+ADDRESSES: 0/4
+RESERVED_ADDRESSES: 0/8
+STATUS: UP
+TURNDOWN_DATE:
+
+NAME: asia-northeast2
+CPUS: 0/8
+DISKS_GB: 0/2048
+ADDRESSES: 0/4
+RESERVED_ADDRESSES: 0/8
+STATUS: UP
+TURNDOWN_DATE:
+
+# How to check machine types list
+-> gcloud compute machine-types list
+
+NAME: n1-standard-2
+ZONE: australia-southeast2-a
+CPUS: 2
+MEMORY_GB: 7.50
+DEPRECATED:
+
+NAME: n1-standard-32
+ZONE: australia-southeast2-a
+CPUS: 32
+MEMORY_GB: 120.00
+DEPRECATED:
+
+NAME: n1-standard-4
+ZONE: australia-southeast2-a
+CPUS: 4
+MEMORY_GB: 15.00
+DEPRECATED:
+
+NAME: n1-standard-64
+ZONE: australia-southeast2-a
+CPUS: 64
+MEMORY_GB: 240.00
+DEPRECATED:
+
+NAME: n1-standard-8
+ZONE: australia-southeast2-a
+CPUS: 8
+MEMORY_GB: 30.00
+DEPRECATED:
+
+# Suppose I want look only specific zone,region and machine type 
+
+-> gcloud compute machine-types list --filter zone:australia-southeast2-a (this is command)
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute machine-types list --filter zone:australia-southeast2-a
+NAME: e2-highcpu-16
+ZONE: australia-southeast2-a
+CPUS: 16
+MEMORY_GB: 16.00
+DEPRECATED:
+
+NAME: e2-highcpu-2
+ZONE: australia-southeast2-a
+CPUS: 2
+MEMORY_GB: 2.00
+DEPRECATED:
+
+NAME: e2-highcpu-32
+ZONE: australia-southeast2-a
+CPUS: 32
+MEMORY_GB: 32.00
+DEPRECATED:
+
+NAME: e2-highcpu-4
+ZONE: australia-southeast2-a
+CPUS: 4
+MEMORY_GB: 4.00
+DEPRECATED:
+
+# How to two zone select at same time
+-> gcloud compute machine-types list --filter "zone:(australia-southeast2-a australia-southeast2-c)"
+
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute machine-types list --filter "zone:(australia-southeast2-a australia-southeast2-c)"
+
+NAME: n2-standard-8
+ZONE: australia-southeast2-a
+CPUS: 8
+MEMORY_GB: 32.00
+DEPRECATED:
+
+NAME: n2-standard-80
+ZONE: australia-southeast2-a
+CPUS: 80
+MEMORY_GB: 320.00
+DEPRECATED:
+
+NAME: e2-highcpu-16
+ZONE: australia-southeast2-c
+CPUS: 16
+MEMORY_GB: 16.00
+DEPRECATED:
+
+NAME: e2-highcpu-2
+ZONE: australia-southeast2-c
+CPUS: 2
+MEMORY_GB: 2.00
+DEPRECATED:
+

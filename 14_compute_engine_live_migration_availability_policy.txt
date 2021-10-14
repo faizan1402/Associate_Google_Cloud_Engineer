@@ -1,0 +1,14 @@
+# Compute Engine: Live Migration & Availability Policy
+-> How do you keep your VM instances running  when a host system needes to be updated (a software or hardware update needs to be performed) ?
+
+# Live Migration :
+-> Your running instance is migrated to another host in the same zone
+-> Does not change any attributes or properties of the VM
+-> Supports for instances with local SSDs
+->Not supported for GPU and preemptible instances
+-> Important configuration-Availability Policy :
+->On host maintenance:What should happen during periodic infrastructure maintenance
+ .Migrate(default):Migrate VM instance to othe hardware
+ . Terminate:Stop the VM instance
+ -> Automatic restart : Restart VM instances if they are terminated due to non-user initiated reasons (maintenance even,hardware failure etc.)
+ 

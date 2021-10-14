@@ -1,0 +1,167 @@
+# Playing with Managed Instance Groups-Making Updates
+ # 1-> Resize the group:
+   .gcloud compute instance-groups managed resize my-mig --size=1
+
+   -> gcloud compute instance-groups managed resize my-mig --size=1 --zone us-central1-a
+
+ # 2->Recreate one or more instances (delete and recreate instances):
+    -> gcloud compute instance-groups managed recreate-instances my-mig --instance=my-instance-1,my-instance-2
+ # 3-> Update specifi instances:
+   ->gcloud cloud compute instance-groups managed update-instances my-mig --instances=myinstance-3,my-instance-4(update specific instances from the group)
+   -> --minimal-action-allowed-action=none(default)/refresh/replace/restart
+   -> --most-disruptive-allowed-action=none(default)/refresh/replace/restart
+  # 4 Update instance template:
+    -> gcloud compute instance-groups managed set-instance-template my-mig --template=v2-template
+   -> After uploading instance template,you can trigger roll out of the new template using update-instances,recreate-instances or rolling-action start-update commands
+  # 5 Scenario:You want to manage your new release-v1 to v2-without downtime
+  # gcloud compute instance-groups managed rolling-action
+  # Restart(stop&start) -> gcloud instance-groups managed rolling-action restart my-mig
+   -> --max-surge=5 or 10%(Max no of instances updated at a time)
+   # Replace(delete & recreate)-gcloud compute instance-groups managed rolling-action replace my-mig
+    -> --max-surge=5 or 10%(Max no of instanseds updated at a time)
+    -> --max-unavailable=5 or 10%(Max no of instances that can be down for the update)
+    -> --replacement-method=recreate/substitute( recreate creates instances with new names,substitutes reuses,names)
+   # Update instances to a new template:
+    ->Basic Version(Update all instances slowly step by step)-gcloud compute instance-groups managed action start-update my-mig --version=template=v1-template
+    # Canary Version:(Update a subset of instances to v2)-gcloud compute instance-groups managed rolling action start-update my-mig --version=template=v1-template--canary-version=template=v2-template,target-size=10%
+    ss
+  # 1 ->It shows the policies 
+
+  
+ officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed resize my-mig --size=1 --zone us-central1-a
+Updated [https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/instanceGroupManagers/my-mig].
+WARNING: Some requests generated warnings:
+ - Group is autoscaled and provided target size can be overridden by autoscaler's recommendation.
+
+---
+baseInstanceName: my-mig
+creationTimestamp: '2021-10-03T02:57:19.105-07:00'
+currentActions:
+  abandoning: 0
+  creating: 0
+  creatingWithoutRetries: 0
+  deleting: 1
+  none: 1
+  recreating: 0
+  refreshing: 0
+  restarting: 0
+  verifying: 0
+fingerprint: OUOSh4dSVCQ=
+id: '6365436784829317264'
+instanceGroup: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/instanceGroups/my-mig
+instanceTemplate: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/global/instanceTemplates/my-instance-template-with-custom-image
+kind: compute#instanceGroupManager
+name: my-mig
+selfLink: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/instanceGroupManagers/my-mig
+status:
+  autoscaler: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/autoscalers/my-mig-p051
+  isStable: false
+  stateful:
+    hasStatefulConfig: false
+    perInstanceConfigs:
+      allEffective: true
+  versionTarget:
+    isReached: true
+targetSize: 1
+updatePolicy:
+  maxSurge:
+    calculated: 1
+    fixed: 1
+  maxUnavailable:
+    calculated: 1
+    fixed: 1
+  minimalAction: REPLACE
+  replacementMethod: SUBSTITUTE
+  type: OPPORTUNISTIC
+versions:
+- instanceTemplate: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/global/instanceTemplates/my-instance-template-with-custom-image
+  targetSize:
+    calculated: 1
+zone: https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a
+
+# 2-> If you see instance managed group list 
+
+ -> gcloud compute instance-groups managed list
+
+officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed list
+NAME: my-managed-instance-group
+LOCATION: us-central1
+SCOPE: region
+BASE_INSTANCE_NAME: my-managed-instance-group
+SIZE: 2
+TARGET_SIZE: 2
+INSTANCE_TEMPLATE: my-instance-template-with-custom-image
+AUTOSCALED: yes
+
+NAME: my-mig
+LOCATION: us-central1-a
+SCOPE: zone
+BASE_INSTANCE_NAME: my-mig
+SIZE: 2
+TARGET_SIZE: 2
+INSTANCE_TEMPLATE: my-instance-template-with-custom-image
+AUTOSCALED: yes
+
+ # 3-> check instances list
+ -> gcloud compute instances list
+
+ officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instances list
+NAME: my-mig-gdr8
+ZONE: us-central1-a
+MACHINE_TYPE: e2-medium
+PREEMPTIBLE:
+INTERNAL_IP: 10.128.0.4
+EXTERNAL_IP: 35.238.234.227
+STATUS: RUNNING
+
+NAME: my-mig-j2j3
+ZONE: us-central1-a
+MACHINE_TYPE: e2-medium
+PREEMPTIBLE:
+INTERNAL_IP: 10.128.0.6
+EXTERNAL_IP: 104.198.40.198
+STATUS: RUNNING
+
+NAME: my-managed-instance-group-1fm6
+ZONE: us-central1-b
+MACHINE_TYPE: e2-medium
+PREEMPTIBLE:
+INTERNAL_IP: 10.128.0.2
+EXTERNAL_IP: 34.122.225.94
+STATUS: RUNNING
+
+NAME: my-managed-instance-group-89v4
+ZONE: us-central1-f
+MACHINE_TYPE: e2-medium
+PREEMPTIBLE:
+INTERNAL_IP: 10.128.0.3
+EXTERNAL_IP: 34.135.87.66
+STATUS: RUNNING
+
+NAME: my-first-instances-from-gcloud
+ZONE: us-east1-b
+MACHINE_TYPE: n1-standard-1
+PREEMPTIBLE:
+INTERNAL_IP: 10.142.0.2
+EXTERNAL_IP: 34.139.40.200
+STATUS: RUNNING
+
+NAME: my-test-vm
+ZONE: asia-south1-c
+MACHINE_TYPE: e2-medium
+PREEMPTIBLE:
+INTERNAL_IP: 10.160.0.2
+EXTERNAL_IP: 35.200.148.210
+STATUS: RUNNING
+
+# 3 How to recreate zone or delete the zone :
+  
+  -> gcloud compute instance-groups managed recreate-instances my-mig --instances=my-mig-gdr8 --zone us-centrall-a
+
+
+  officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-groups managed recreate-instances my-mig --instances=my-mig-j2j3 --zone us-central1-a
+Updated [https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/zones/us-central1-a/instanceGroupManagers/my-mig].
+PROJECT: theta-anchor-327006
+ZONE: us-central1-a
+INSTANCE: my-mig-j2j3
+STATUS: SUCCESS

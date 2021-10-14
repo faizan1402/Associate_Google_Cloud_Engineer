@@ -1,0 +1,24 @@
+# Open Network Services
+  # Network services ->search load balancer
+
+  # Create load balancer so different oprions to available in load balancer
+  
+  HTTP(s) Load Balancing      TCP Load Balancing     UDP Load Balancing
+  
+  # Firstly creating HTTP load balancer
+   -> Internet facing or internal only
+    .From Internet to my VMs
+    .Only between my VMs
+
+   -> So select from internet to my VMs
+     -> create load balancer -> my-http-load-balancer
+     -> Backend configuration (create backend configuration)
+     -> Backend type -> Instance group
+    ->  New backend -> my-managed-instance-group
+    -> Port No->80 (done)
+    -> health check
+    # Frontend configuration as Default
+    # Host and path rules also default
+    # Backend configuration also default
+    # Review and finalize
+    # Create (Load Balancer) 

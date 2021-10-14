@@ -1,0 +1,32 @@
+# App Engine (Very Important in google coloud plateform)
+
+#  App Engine:
+  -> Simplest way to deploy and scale your applications in GCP
+  -> Supports:
+  . Go,Java,.NET,Node.js,PHP,Python,Ruby using pre-configured runtimes
+  . Use custom run-time and write code in any language
+  . Connect to variety of Google Cloud storage products(Cloud SQL etc)
+
+ -> No usage charges - Pay for resources provisioned
+
+ -> Features:
+    . Automatic load balancing & Auto scaling
+    . Managed platform updates & Application health monitoring
+    . Application versioning
+    . Traffic splitting
+    
+  # Compute Engine vs App Engine
+  -> Compute Engine
+    . IAAS
+    . More Flexibility
+    . Lesser Responsibility
+    . Lower Flexibility
+    . Fine grained Access/Permissions(Certificates/Firwalls)
+    . Availability etc
+
+  -> App Engine
+     . Paas
+     . Serverless
+     . Lesser Responsibility
+     . Lower Flexibility
+     

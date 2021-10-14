@@ -1,0 +1,44 @@
+# Compute Engine Scenarios
+
+->Scenario                                              solution
+
+
+
+1-What are the pre-requisites to be able                   1 Project
+to create a VM instance                                  2 Biling Account
+                                                         3 Compute Engine API should be enabled
+
+2-You want to dedicate for hardware for your                     Sole tenant notes 
+compliance licensing and management need  
+
+3-I have 1000 VMs and I want to automatic OS                      Use VM manager
+path management,OS inventory management and
+OS configuration management(manage software installed)
+
+4-You want to login to your VM instance to install                 You can SSH into it
+software
+
+5-You do not want to expose VM internet                             Do not assign an External IP address
+
+
+6-You want to allow HTTP traffic to your VM                         Configure Firewall rules
+
+
+# Quick Review :
+
+ # Image:
+  -> What operating system and what software do you want on the VM instance?
+
+  -> Reduce boot time and improve security by creating custome handended images.
+
+  ->You can share an image with other projects
+   #Machine Types:
+  ->Optimized combination of compute(CPU,GPU),memory,networking for specific workloads.
+
+  -> You can create your own Custom Machine Types when existing ones don't fit your needs.
+
+ ->  Static IP Addresses: Get a constant IP addressed for VM instances 
+ ->  Instace Templates:Pre-configured templates simplifying the creation of VM  instances
+ ->  use discounts: Automatic discounts for running significant portion of the billing month
+ -> Committed use discounts:1 year of 3 year reservations for workload with predictable resource needs.
+ ->Preemptible VM: Short-lived cheaper(upto 80%) compute instances for non-time-criticl fault-tolerant workloads

@@ -1,0 +1,21 @@
+# How to create instance templates
+# why do you need to specify all the VM instance details (Image,instance,type etc)
+ every time you launch an instance?
+ -> How about creating a instance template?
+ -> Define machine type,image,labels startup script and other properties
+ -> Used to create VM instance and managed instance groups
+ -> Provides a convenient way to creat similar instances
+ -> CanNot be updated
+ -> To make a change,copy an existing template and modify it
+ -> (Optional) Image family can be specified (example-debian-9):
+  ->Latest non-deprecated version of the family is used
+ -> DEMO-Launch VM instances using Instance templates.
+
+# Create My instance template with startup
+  -> my-instance-template-with-startup-script (name of instance template)
+  -> Firstly Go to instance template
+  -> Afterthat create vminstance (inside virtul machine creating through instance template)
+  ->  same path creating virtual machine(my-instance-template-with-startup-script-1) so this is virtual machine creating
+  -> Hello world from my-instance-template-with-startup-script-1 10.182.0.4 (output when external ip address are run)
+
+

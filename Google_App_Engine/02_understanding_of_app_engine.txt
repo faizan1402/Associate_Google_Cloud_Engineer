@@ -1,0 +1,26 @@
+# App Engine Environments
+# Standard:
+  . Applications run in language specific sandboxes.
+  .Complete isolation from OS/Disk/Other Apps
+  . V1:Java,Python,PHP,Go(old versions)
+    . Only for Python and PHP runtimes:
+    . Only white-listed extensions and libraries are allowed
+    
+# App Engine Environments :
+ -> Standard:Applications run in language specific sandboxes
+ ->V2:Java,Python,PHP,Node.js,Ruby,Go(Newer Version)
+ # Flexible : Application instances run within Docker containers
+ -> Makes use of Compute Engine virtual machines
+ -> Support Any runtime (with built in support for python,java,node.js,Go,Ruby,PHP,or.NET)
+ -> Provides access to background processes and local disks.
+
+ # App Engine - Application Component Hierarchy
+ -> Application:One App per Project
+ -> Service(s):Multiple Microservices or App components
+   .You can have multiple services in a single application
+   .Each Service can have different settings 
+   . Earlier Called Modules
+  # Version(s): Each version associated with code and configuration
+   . Each version can run in one or more instances
+   . Multiple versions can co-exist
+   . Options to rollback and split traffic

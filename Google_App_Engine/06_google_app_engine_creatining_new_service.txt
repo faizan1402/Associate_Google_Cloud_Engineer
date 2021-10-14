@@ -1,0 +1,77 @@
+#Now creating new services and deploy again the application
+# creating my-first-service (select the folder name)
+-> cd my-first-service
+# Firstly setup the project and project ID
+-> gcloud config set project zippy-chain-328211
+
+# 1->Afterthat Deploy the yaml file (data base file)
+-> gcloud app deploy
+
+Deployed service [my-first-service] to [https://my-first-service-dot-zippy-chain-328211.uc.r.appspot.com]
+-> This url is showing our application is deploy and check the application on browser and run 
+the application or access the application on  web browser through
+
+# 2- Again Previous command run -> gcloud app services list
+-> gcloud app services list
+
+officialfaizanahmad@cloudshell:~/my-first-service (zippy-chain-328211)$ gcloud app services list
+SERVICE: default
+NUM_VERSIONS: 4
+
+SERVICE: my-first-service
+NUM_VERSIONS: 1
+
+# 3- checking different versions list
+-> gcloud app versions list
+
+officialfaizanahmad@cloudshell:~/my-first-service (zippy-chain-328211)$ gcloud app versions list
+SERVICE: default
+VERSION.ID: 20211006t122102
+TRAFFIC_SPLIT: 0.00
+LAST_DEPLOYED: 2021-10-06T12:25:06+00:00
+SERVING_STATUS: SERVING
+
+SERVICE: default
+VERSION.ID: 20211006t130351
+TRAFFIC_SPLIT: 0.00
+LAST_DEPLOYED: 2021-10-06T13:04:38+00:00
+SERVING_STATUS: SERVING
+
+SERVICE: default
+VERSION.ID: v2
+TRAFFIC_SPLIT: 0.00
+LAST_DEPLOYED: 2021-10-06T13:36:07+00:00
+SERVING_STATUS: SERVING
+
+SERVICE: default
+VERSION.ID: v3
+TRAFFIC_SPLIT: 1.00
+LAST_DEPLOYED: 2021-10-06T14:03:23+00:00
+SERVING_STATUS: SERVING
+
+SERVICE: my-first-service
+VERSION.ID: 20211007t154259
+TRAFFIC_SPLIT: 1.00
+LAST_DEPLOYED: 2021-10-07T15:43:41+00:00
+SERVING_STATUS: SERVING
+
+# How to check active version of default services
+-> gcloud app browse
+officialfaizanahmad@cloudshell:~/my-first-service (zippy-chain-328211)$ gcloud app browse
+Did not detect your browser. Go to this link to view your app:
+https://zippy-chain-328211.uc.r.appspot.com
+
+# This is older virsion url is showing
+-> gcloud app browse --version=my-first-service
+
+officialfaizanahmad@cloudshell:~/my-first-service (zippy-chain-328211)$ gcloud app browse --version=my-first-service
+Did not detect your browser. Go to this link to view your app:
+https://my-first-service-dot-zippy-chain-328211.uc.r.appspot.com
+
+# How to check version 
+-> gcloud app browse --service=my-first-service --version=20211007t154259
+
+officialfaizanahmad@cloudshell:~/my-first-service (zippy-chain-328211)$ gcloud app browse --service=my-first-service --version=20211007t154259
+Did not detect your browser. Go to this link to view your app:
+https://20211007t154259-dot-my-first-service-dot-zippy-chain-328211.uc.r.appspot.com
+ 

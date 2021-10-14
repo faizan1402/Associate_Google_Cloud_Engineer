@@ -1,0 +1,25 @@
+#Kubernetes:
+-> Most popular open source container orchestration solution
+-> Provides cluster management (including upgrades)
+  ->Each cluster can have different types of virtual machines
+->Provides all important container orchestration features:
+  .Auto Scaling
+  .Service
+  .Load Balancer
+  .Self Healing
+  .Zero Downtime Deployments
+
+ # Google Kubernetes Engine(GKE)
+  -> Managed Kubernetes service
+  -> Minimize operation with auto-repair(repair failed nodes) and auto-upgrade(use latest version of K8S always) features
+  ->Provides Pod and Cluster Autoscaling
+  ->Enable cloud logging and cloud monitoring with simple configuration
+  ->Uses Container-Optimized OS,hardened OS built by Google
+  ->Provides support for Persistent disks and Local SSD
+
+
+  # Features of Deployment the kubernetes cluster
+  -> Check CPU,Memomory,Disk 
+  -> Check the External Ip address and check the different activity internal and 
+  external activity
+  ->  

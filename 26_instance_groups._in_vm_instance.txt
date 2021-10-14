@@ -1,0 +1,40 @@
+#   Instance Groups
+ -> How do you create a group of VM instances?
+    .Instance Group-Group of VM instances managed as a single entity
+     .Manage group of similar VMS having similar lifecycle as ONE UNIT
+   -> Two Types of Instance Groups:
+     -> Managed:Identical VMS created using a template:
+     . Features:Auto scaling,auto healing and managed relates
+     -> Unmanaged:Different configuration for VMS in same group:
+     . Does not offer auto scaling,auto healing & other services
+     . Not Recommended unless you need differnt kinds of VMs
+     . Location can be Zonal or Regional
+
+   # Managed Instance Groups (MIG)
+
+    . Managed Instance Group - Identical VMs created using instance template
+
+    -> Important Features of Managed Instance:
+     .Maintain certain numbers of instances
+      . If an instance crashes,MIG launches another instance
+     . Detect application failues using health checks (self healing)
+     . Increase and decrease instances based on load (Auto Scaling)
+     . Add Load Balancer to distribute load
+     . Create instances in multiple zones (regional MIGs)
+     . Regional MIGs provide higher availablity compared to zonal MIGs
+     . Release new application versions without downtime
+      . Rolling updates: Release new version step by step (gradually).Update a percentage of instances to the new version at a time.
+      . Canary Deployment : Test new version with a group of instances before releasing it across all instances.
+
+  # Creating Managed Instance Group (MIG)
+    -> Instance template is manadatory
+    -> Configure auto-scaling to automatically adjust number of instances based on load:
+     -> Minimum number of instances
+     -> Maximum number of instances
+     -> Autoscaling metrics:CPU Utilization target or Load Balancer Utilization target or Any other metric from Stack Driver
+  .Cool-down period: Prevent a sudden drop in no of VM instances
+  . Scale in Controls: Prevent a sudden drop in no of VM instances
+  . Example : Do n't scale in by more than 10% or 3 instances in 5 minutes
+
+  -> Autohealing:Configure a health check with initial delay (How long should you wait for your app to initialize before running a health chec?)
+

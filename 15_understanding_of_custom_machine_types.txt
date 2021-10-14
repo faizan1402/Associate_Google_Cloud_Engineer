@@ -1,0 +1,8 @@
+# Compute Engine Features:Custom Machine
+
+-> What do you do when predefined VM options are Not appropriate for your workload?
+->Custom Machine Type:Adjust vCPU,memory and GPUs
+-> Choose between E2,N2,or N1 machine types
+-> Supports a wide variety of operating systems:centOS,coreOS,Debian,Red,Hat,Ubuntu,Windows etc
+->Biled per vCPU,memory provisioned to each instance
+ . Example Hourly Price:$ 0.033174/vCPU + $ 0.004446/GB

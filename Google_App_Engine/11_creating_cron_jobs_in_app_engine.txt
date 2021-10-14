@@ -1,0 +1,46 @@
+# App Engine-Cron Job
+
+cron:
+- description:"daily summary job"
+ url:/tasks/summary
+ schedule:every 24 hours
+
+ # Allows to run scheduled jobs at pre-defined intervals
+  -> Use cases:
+     .Send a report by email every day
+     .Refresh cache date evey 30 minutes
+  -> Configured using cron.yaml
+  -> Run this command -gcloud app deploy cron.yaml
+
+
+# YAML Files-dispatch and queue
+  
+ # dispatch.yaml-override routing rules
+
+ dispatch:
+   -url:"*/mobile/*"
+    service:mobile-frontend
+   -url:"*/work/*"
+    service: static-backend
+# queue.yaml -manage task queues
+ 
+ queue:
+ - name:fooque
+   rate:l/s
+   retry_parameters:
+    task_retry_limits:7
+    task_age_limit:2d
+ # App Engine-Remember
+
+ -> AppEngine is Regional(services deployed across zones)
+   .You cannot change an Applications region
+ -> Good option for simple microservices(multiple services)
+   .Use standard v2 when you are using supported languages
+   .Use Flexible if you are building containerized apps
+ -> Be aware-Atleast one container always running when using Flexible:
+    .Go for standard if you want to be able to scale down the number of instances to zero when there is No load.
+ -> Use a combination of resident and dynamic instances
+   .Resident Instances:Run continuously
+   .Dynamic Instances:Added based on load
+     .Use all dynamic instances if you are cost sensitive.
+     .If you are not very cost sensitive,keep a set of resident instances running always

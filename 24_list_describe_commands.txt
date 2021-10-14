@@ -1,0 +1,23 @@
+# List and Describe Commands
+
+-> Typically list commands are used to list a set of resources
+->gcloud compute RESOURCES list
+  .gcloud compute images/regions/zones/disk list
+  .gcloud compute instances/disks/snapshots list
+
+ -> Most list commands support a few common options
+   . --filter="zone:VALUE"
+
+  -> gcloud compute regions list --uri
+     .gcloud compute
+
+  -> gcloud compute instances list/start/stop/delete/reset/describe/move
+  -> gcloud compute instances start example-instance
+  -> gcloud compute instances stop example-instance-1 example-instance-2
+  -> gcloud compute instances delete example-instance
+     . --delete-disks=VALUE(all or data or boot)
+     . --keep-disk=VALUE(all or data or boot)
+
+     # move command basically one zone to move another zone
+
+  -> gcloud compute instances move  example-instance-1 zone us-central1b --destination-zone us-central-f

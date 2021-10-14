@@ -1,0 +1,25 @@
+# GCP Managed Services For Compute:
+
+    Service                      Details                                      Category
+
+1-Compute Engine               High-performance and general purpose            Laas
+                               that VM that scale globally
+                                 
+
+2- Google Kubernetes Engine     Orchestrate containerized microservices         Caas
+                                on Kubernetes needs advanced cluster 
+                                configuration and monitoring
+
+3- App Engine                   Build highly scalable applications on           PAAS(CAAS)
+                                fully managed platform using open and            Serverless
+                                familiarlanguages and tools.
+
+
+4- Cloud Functions              Build event driven application using            Faas Serverless
+                                simple,single purpose functions
+
+5- Cloud Run                    Develop and Deploy higly scalable               Caas(Serverless)
+                                containerized applications does
+                                not need a cluster
+                                                                                 
+

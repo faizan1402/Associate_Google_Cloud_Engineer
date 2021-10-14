@@ -1,0 +1,37 @@
+# gcloud compute instances create
+
+   ->Open link and all commands available
+    -> https://cloud.google.com/sdk/gcloud/reference/compute/instances/create
+
+ -> Creating Compute Instances
+  ->gcloud compute instances create [Name]
+
+   .Options
+   -> --machine-type(default type is n1-standard-1-gcloud compute machine-types list)
+  -> --custom-cpu--custom-memory--custom-vm-type(n1/n2)(Custom Machine)
+  -> --custom-cpu6--custom-memory 3072MB custom-vm-type n2
+  -> --image or --image-family or --source-snapshot or--source-instance-template or--source-machine-image(beta)
+  -> --service-account or --no-service-account
+
+  -> --zone=us-central1-b
+  -> --tags(List of tags-Allow network firewall rules and rutes to be applied to VM instances)
+  -> --preemptible
+  -> --restart-on-failure(default) --no-restart-on-failure--maintenace-policy(MIGRATE(default)/TERMINATE)
+  -> --boot-disk-size,--boot-disk-type--boot-disk-auto-delete(default)--no-boot-disk-auto-delete
+  -> --deletion-protection--no-detection-protection(default)
+  -> --metadata/metadata-from-file startup-script/startup-script-url
+   -> --metadata-from-file-startup-script=/local/path/to/script/startup OR--metadata startup-script="echo 'hello world"
+   -> shutdown script
+   -> --network--subnet--network-tier(PREMIUM(default),STANDARD)
+   -> --accelerator="type=nvidia-tesla-v100,count=8"--metadata="install-nvidia-driver=True"(GPU)
+
+   -> Compute Instances -Default Region and Zone
+
+   -> Three Options:
+      .Option 1 (Centralized Configuration):gcloud compute project-info add-metadata
+    -> --metadata=[gcloud-compute-default-region=REGION|google-compute-default-zone=ZONE]
+    ->Option 2 (Local gcloud configuration):gcloud config set compute/region REGION
+    ->Option 3(Commnd Specific):--zone or --region in the command
+    ->Priority:Option3 (if exists) override Option2 (if 
+    )
+    

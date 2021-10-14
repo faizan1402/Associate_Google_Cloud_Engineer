@@ -1,0 +1,53 @@
+# How to install gcloud shell on google cloud platform
+-> Open gcloud shell
+-> Check version (gcloud --version)
+   -> project: theta-anchor-327006 (this is current project id)
+-> Connecting to GCP
+-> gcloud init-initialize or reinitialize gcloud (so command using gcloud init-initialize)
+  . authorize gcloud to use your user account credentials
+  . setup configuration
+  . includes current project,default zone etc
+ -> gcloudc config list -lists all properties of the active
+ # List of gcloud command
+  -> gcloud init
+  -> gcloud --version 
+  -> gcloud config list project
+  -> gcloud config configuration list
+  -> gcloud config configuration activate my-default-configuration
+  -> gcloud config list (list all properties of the active configuration)
+  -> gcloud config configuration describe my-second-configuration
+  -> gcloud compute instances list
+  -> gcloud compute instances create
+  -> gcloud compute instances create my-first-from-gcloud
+  -> gcloud compute instances describe my-first-instance-from-gcloud
+  -> gcloud compute instances delete my-first-instance-from-gcloud
+  -> gcloud compute zones list
+  -> gcloud compute regions list
+  -> gcloud compute machine types list
+  -> gcloud compute machine-type list --filter zone:asia-southeast2-b
+  -> gcloud compute zones list --filter "zone:(asia-southeast2-b asia-southeast2-c)"
+  -> gcloud compute zones list --filter=region:us-west2
+  -> gcloud compute zones list --sort-by=region
+  -> gcloud compute zones list --sort-by=~region
+  -> gcloud compute zones list --uri
+  -> gcloud compute regions describe us-west4
+  -> gcloud compute instance-templates list
+  -> gcloud compute instance-templates create instance-template-from-command-line
+  -> gcloud compute instance-templates delete instance-template-from-command-line
+  -> gcloud compute instance-templates describe my-instance-template-with-custom-image
+
+  # If you are changes the zone and region then  below command using
+
+   . gcloud config set core/project value
+   . gcloud config set compute/region value
+   . gcloud config set compute/zone value
+   . gcloud config set core/verbosity value (debug)
+   ->syntax- gcloud config set Section/property value
+     . core,compute- Sections
+     . project,region,zone-Properties
+     . Specifying core is optional as it is the default Section!
+     . gcloud config set project value
+     . gcloud config set verbosity value (debug)
+    ->Get more details with gcloud config set --help (so this command to help)
+    ->gcloud config list --help (this is also a help)
+    

@@ -1,0 +1,8 @@
+  # Installing HTTP ( Using Google Compute Engine)
+# whoami (this commnd virtual machine) means user name print
+# pwd (print working directory (or current working directory)
+# ls (number of list)
+# sudo su 
+#apt update(update packages)
+# apt install apache2 ( means run http server files) this apache2 server runs
+# echo "any name" >(> this symbol means) /var/www/html/index.html (means automatic  html file save on server

@@ -1,0 +1,67 @@
+# How check compute templates list (I'm select asia zone only one zone is showing but us zone lots of zone avaialbel)
+ -> Before this command run it's compulsory
+ -> gcloud init
+-> gcloud compute instance-templates list
+
+ officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$  gcloud compute instances list
+NAME: my-first-instances-from-gcloud
+ZONE: us-east1-b
+MACHINE_TYPE: n1-standard-1
+PREEMPTIBLE:
+INTERNAL_IP: 10.142.0.2
+EXTERNAL_IP: 34.139.40.200
+STATUS: RUNNING
+
+
+
+-> gcloud compute instance-templates create instance-template-from-command-line
+
+  officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-templates create instance-template-from-command-line
+Created [https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/global/instanceTemplates/instance-template-from-command-line].
+NAME: instance-template-from-command-line
+MACHINE_TYPE: n1-standard-1
+PREEMPTIBLE:
+CREATION_TIMESTAMP: 2021-09-29T10:30:28.520-07:00
+
+ -> Means Created This instance-template-from-command-line
+
+ # How to delete instance templates
+ ->  gcloud compute instance-templates delete instance-template-from-command-line
+
+ officialfaizanahmad@cloudshell:~ (theta-anchor-327006)$ gcloud compute instance-templates delete instance-template-from-command-line
+The following instance templates will be deleted:
+ - [instance-template-from-command-line]
+
+Do you want to continue (Y/n)?  Y 
+
+
+Deleted [https://www.googleapis.com/compute/v1/projects/theta-anchor-327006/global/instanceTemplates/instance-template-from-command-line].
+ 
+ # How to create instance template with custom image
+  gcloud compute instances create my-test-vm --source-instance-template=my-instance-template-with-custom-image
+
+
+NAME: my-test-vm
+ZONE: asia-south1-c
+MACHINE_TYPE: e2-medium
+PREEMPTIBLE:
+INTERNAL_IP: 10.160.0.2
+EXTERNAL_IP: 35.200.148.210
+STATUS: RUNNING
+
+
+-> gcloud compute instance-templates create/delete/describe/list
+  . gcloud compute instance-templates create INSTANCE-TEMPLATE
+    . --source-instance=SOURCE_INSTANCE --source-instance-template
+    -> --service-accountor or --no-service-account
+    -> --tags
+    -> --preemptible
+    -> --restart-on-failure(default) --no-restart-on-failure--maintenance-policy(MIGRATE(default)/TERMINATE)
+    -> --boot-disk-size,--boot-disk-type--boot-disk-auto-delete(default)-no-boot-disk-auto-delte
+    -> deletion-protection --no-deletion-protection(default)
+    -> --metadata/metadata-from-file-startup-script/startup-script-url
+    -> --network--subnet--network-tier(PREMIUM(default),STANDARD)
+
+    -> --accelerator="type=nvidia-tesla-v100,count=8"--metadata="install-nvidia-driver=True"(GPU)
+  
+

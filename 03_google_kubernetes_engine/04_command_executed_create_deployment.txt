@@ -1,0 +1,4 @@
+#Commands executed in next step - Create Deployment
+#Here's the command to create a deployment which we will run in the next step!
+Use this to avoid making typos!
+->kubectl create deployment hello-world-rest-api --image=in28min/hello-world-rest-api:0.0.1.RELEASE

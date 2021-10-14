@@ -1,0 +1,20 @@
+# App Engine -Scenarios
+
+      Scenario                                    Solution
+
+1- I want to create two google                  Not possible.you can have only one app engine
+app engines in the same project                 per project.However you can have multiple services
+                                                multiple version of each service.
+
+2- I want to create two google                  Yup.You can create multiple services under the app
+app engine services inside the                  each services can have multiple versions as well. 
+same app.
+
+3-I want to move my Google                      App Engine is App region specific.You can't move t
+App to different region.                        to different region.create a new project and creat
+                                                e new new engine app in the new region.
+
+4-Perform Canary Deployment                     Deploy v2 without shifting traffic (gcloud app 
+                                                 deploy --no-promote) shift some traffic to V2(gcloud app services set traffic s1 --splits v1=0.9,v2=0.1))
+                                                 
+

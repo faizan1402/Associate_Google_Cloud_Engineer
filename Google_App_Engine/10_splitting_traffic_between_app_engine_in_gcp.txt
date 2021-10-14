@@ -1,0 +1,55 @@
+# How do you split traffic between multiple versions?
+ -> IP Splitting:Based on request Ip address
+  .IP addresses can change causing accuracy issues!(I go from my house to a coffee shop)
+  .If all requests originate from a corporate vpn with single IP,this can cause all requests to go to the same version
+ ->Cookie Splitting:Based on a cookie(GOOGAPPUID)
+  .Cookies can be controlled from your application
+  .Cookie splitting accurately assign users to versions
+ -> Random:Do it randomly
+
+ -> How to do it?
+   .Include --split-by option in gcloud app services set-traffic command
+   . Value must be one of:cookie,ip,random
+
+
+   #Playing with App Engine
+
+   -> gcloud ap browse/create/deploy/describe/open-console
+    .gcloud app create --region=us-central
+    .gcloud app deploy app.yaml
+     . --image-url:Only for flexible environments.Deploy docker image.
+     . --promote--no-promote(should new version receive traffic?)
+     . --stop-previous-version --no-stop-previous-version(should old version be stopped after new version receives all traffic?)
+      .--version(Assign a version.Otherwise,a version number is generated.)
+   ->gcloud app browse --service="myservice" --version="v1"
+   ->gcloud app open-console --service="myservice" --version="v1"
+   ->gcloud app open-console--logs
+ # Other Commands:
+   ->gcloud app log tail
+   ->gcloud app regions list
+
+
+# Playing With App Engine Instances:
+ -> gcloud app instances  delete/describe/list/scp/ssh
+ -> gcloud app instances delete i1 --service=s1 --version=v1
+ -> gcloud app instances describe --service=s1 --version=v1 i1
+ -> gcloud app instances list
+ -> gcloud app instances scp --service=s1 --version=v1 --recurse local_dir i1:remote_dir (Copy files to /from App Engine Flexible instances)
+ -> gcloud app instances ssh --service=s1 --version=v1 i1(SSH into the VM of an App Engine Flexible instances)
+
+ #Playing With App Engine Services and Versions
+  -> gcloud app services list
+  -> gcloud app services browse my-Service --version="v1"
+  -> gcloud app services delete service1 service2
+  -> gcloud app services describe service1
+  -> gcloud app services set-traffic APPI --split-v1=0.9,v2-0.1
+    .--split_by(lip,cookie,random)
+  # gcloud app versions browse/delete/describe/list/migrate/start/stop/
+   -> gcloud app versions list
+   -> --hide-no-traffic(Only show versions that are reciving traffic)
+   -> gcloud app versions migrate v2-service="myService"(migrate all traffic to new version)
+   -> gcloud app versions start/stop v1
+   -> --service=my-service Only start v1 of service my-service.
+   -> gcloud app versions start/stop v1
+    . --service=my-service only start v1 of service my-service
+     

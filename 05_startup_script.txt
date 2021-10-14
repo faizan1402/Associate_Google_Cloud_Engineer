@@ -1,0 +1,29 @@
+# How do we reduce the number of steps in creating an VM instance and setting up a HTTP Server?
+->Let's explore a few operations.
+ . Startup script
+ . Instance Template
+ . Custom Images
+# Bootstrpping with startup script
+ -> apt update
+ -> apt -y install apache2
+ -> echo "Hello World from $(hostname) $(hostname -i)" >/var/www/html_index.html
+# Bootstrapping: Install OS pathes or software when an VM instance is launched.
+   ->VM instance is launched.
+   -> In VM,you can confifure Startup script to Bootstrap
+   -> DEMO - Using Startup script.
+# create vminstance machine
+  -> 1 my-vm-startup-script
+  -> 2 install software management (Later install)
+  -> 3 scroll down open management security
+  -> 4 Management Option
+  -> 5 open startup script (means install the software and defferent services run on virtual machines
+# And this command run for startup script
+   -> #!/bin/bash
+   -> apt update
+   -> apt -y install apache2
+   -> echo "Hello World from $(hostname) $(hostname -I)> /var/www/index.html
+   -> So this path complete copy and pasted the startup script
+   -> after creating the my-vm-startup-script ( and run the external script on server)
+   -> Hello world from my-vm-with-startup-script 10.182.0.3 (output when extenal ip address are run then)
+  
+  

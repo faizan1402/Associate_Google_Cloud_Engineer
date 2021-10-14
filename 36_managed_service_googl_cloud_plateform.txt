@@ -1,0 +1,34 @@
+# Managed Services
+-> Do you want to continue running applications in the cloud,the same way you run them in your data center?
+->OR are there Other approaches?
+-> You should understand some terminology used with cloud services:
+-> LaaS(Infrastructure as a Service)
+-> PaaS(Platform as a Service)
+-> CaaS(Container as a Service)
+-> Serverless
+
+# IAAS(Infrastructure as a Service)
+-> Use only infrastructure from cloud provider
+-> Example:Using VM to deploy your applications or databases
+# You are responsible for:
+->Application Code and Runtime
+-> Configuring load balancing
+-> Auto scaling
+-> OS upgrades and patches
+-> Availability
+-> etc ...(and a lot of things!)
+
+# PAAS(Plateform as a Service)
+-> Use a platform provided by cloud
+-> Cloud provider is responsible for:
+  . OS(incl.upgrades and patches)
+  . Application Runtime
+  . Auto scaling,Availability & Load balancing etc.
+-> You are responsible for:
+  .Configuration(of Application and Services)
+  . Application code(if needed)
+-> Varieties:
+  . CAAS(Container As A Service):Container instead of Apps
+  . FAAS(Function As A Service):Function instead of Apps
+  . Databases- Relational & NoSQL(Amazon,RDS,Google Cloud,SQL,Azure SQL,Database etc),Queue,AI,ML,Operation etc!
+  

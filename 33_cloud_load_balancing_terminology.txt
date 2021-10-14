@@ -1,0 +1,21 @@
+# Cloud Load Balancing -Terminology :
+  
+  System (TO send Request to cloud load balancing) -> Cloud Load Balancing -> Instances Compute Engine
+ 
+# Backend - Group of endpoints that receive traffic from a Google Cloud Load Balancer(example:instance groups)
+
+# Frontend- Specify an IP address,port and protocol.This IP address is the  frontend IP for your clients requests.
+ -> For SSL,a certificate must also be assigned.
+ -> Host and path rules (For HTTP(S)Load Balancing)-Define rules redirecting the traffic to different backends:
+   . Based on path-in28minutes.com/a vs in28minutes.com/b
+   . Based on Host- a.in28minutes.com vs b.in28minutes.com
+   . Based on HTTP headers (Authorization header) and methods(POST,GET,etc)
+
+  -> Client to Load Balancer:Over internet
+    . HTTPS recommended
+  -> Load Balancer to VM instance:Through Google internal network
+   .HTTP is ok.HTTPS is preferred
+  ->SSL/TLS Termination/Offloading
+   . Client to Load Balaner:HTTPS/TLS
+   . Load Balancer to VM instance:HTTP/TCP
+   

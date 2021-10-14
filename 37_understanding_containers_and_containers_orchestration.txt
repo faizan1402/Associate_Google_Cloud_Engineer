@@ -1,0 +1,62 @@
+# Microservices:
+
+  MovieService     CustomerService    ReviewService     BookingService      FareCalculationService
+    |                   |                 |                   |                       |
+    DB1                DB2                DB3                 DB4                     DB5
+
+ # Enterprises are heading towards microservices architectures
+  -> Building small focused microservices
+  -> Flexibility to innovate and build applications in different programming Python,JavaScript,etc)
+  ->But deployments become complex!
+  -> How can we have one way of deploying Go,Java,Python or Javascript...microservices?
+   .Enter containers!
+
+ -> Container-Docker
+  . Create Docker images for each microservice
+  . Docker image has all needs of a microservice:
+  . Application Runtime(JDK or Python or Nodejs)
+  . Application code and Dependencies
+ -> Runs the same way on any infrastructure:
+   . Your local machine
+   . Corporate data center
+   . Cloud
+ # Container Orchestration
+   .Requirement : I want 10 instances of Microservice A container and ...
+ 
+ # Container Orchestration
+ # Requirement:I want 10 instances of Microservice A container,15 instances of Microservice B container and ...
+ # Typical Features:
+   -> Auto Scaling-Scale containers based on demand
+   ->Service Discovery-Help microservices find one another
+   ->Load Balancer- Distribute load among multiple instances of a microservice
+   ->Self Healing- Do health checks and replace failing instances.
+   -> Zero Downtime Deployments- Release new versions without downtime.
+
+
+   # Serverless
+   #What do we think about when we develop an application
+   .Where to deploy?What kind of server?What OS?
+   .How do we take care of scaling and availability of the application?
+  # What if you do not need to worry about servers and focus on 
+    -> Enter Serverless 
+      . Remember:Serverless does not mean "No Servers"
+    -> Serverless for me:
+    .You don't worry about infrastructure(Zero visibility into infrastructure)
+    . Flexible scaling and automated high availability.
+    .Most Important:Pay for use
+     .Ideally Zero Requests=>Zero cost
+   ->You focus on code and the cloud managed service takes care of all that is needed to scale your code to serve milions of requests!
+   . And you pay for requests and NOT serves!
+
+  Serverless-My Perspective!
+  . Serverless-Important Features:
+   1:Zero worry about infrastructure,scaling and availability
+   2:Zero invocations=> Zero Cost(Can you scale down to Zero instances?)
+   3: Pay for invocations and NOT for instances(or nodes or servers)
+   4:Severless Level 1: Features(1+2)
+   5: Serverless Level 2:Features(1+2+3)
+  -> When I refer to Serverless,I'm referring to Level 2
+  -> However cloud providers include managed services at Level 1 and Level 2:
+    -> Level 1: Google App Engine (Google Calls it "App Engine is fully managed,serverless platform"),AWS Faragate (AWS calls it "serverless compute engine for containers")
+  -> Level 2: Google Functions,AWS Lambda,Azure Functions etc
+  
